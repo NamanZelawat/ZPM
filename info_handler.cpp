@@ -7,31 +7,36 @@ void Info_handler::edit_value()
 
 void Info_handler::add_value(string name,string type,string value = "$")
 {
-	// if(type == "int")
-	// {
-	// 	temp.SetInt(stoi(value));
-	// 	document.AddMember(name, temp, allocator);
-	// }
-	// else if(type == "float")
-	// {
-	// 	temp.SetFloat(stof(value));
-	// 	document.AddMember(name, temp, allocator);
-	// }
-	// else if(type == "string")
-	// {
-	// 	temp.SetString(value, value.size()+1, document.GetAllocator());
-	// 	document.AddMember(name, temp, allocator);
-	// }
-	// else if(type == "array")
-	// {
-	// 	temp.SetArray();
-	// 	document.AddMember(name, temp, allocator);
-	// }
-	// else if(type == "object")
-	// {
-	// 	temp.SetObject();
-	// 	document.AddMember(name, temp, allocator);
-	// }
+	if(type == "int")
+	{
+		Value nm(name.c_str(),*allocator);
+		temp->SetInt(stoi(value));
+		document->AddMember(nm, *temp, *allocator);
+	}
+	else if(type == "float")
+	{
+		Value nm(name.c_str(),*allocator);
+		temp->SetFloat(stof(value));
+		document->AddMember(nm, *temp, *allocator);
+	}
+	else if(type == "string")
+	{
+		Value nm(name.c_str(),*allocator);
+		temp->SetString(value.c_str(), *allocator);
+		document->AddMember(nm, *temp, *allocator);
+	}
+	else if(type == "array")
+	{
+		Value nm(name.c_str(),*allocator);
+		temp->SetArray();
+		document->AddMember(nm, *temp, *allocator);
+	}
+	else if(type == "object")
+	{
+		Value nm(name.c_str(),*allocator);
+		temp->SetObject();
+		document->AddMember(nm, *temp, *allocator);
+	}
 }
 
 void Info_handler::write()

@@ -66,16 +66,18 @@ void make_list_file()
 	document.Parse(json);
 
  	Value project_name;
-
 	project_name.SetString(temp, strlen(temp), document.GetAllocator());
-
 	document.AddMember("name",project_name, document.GetAllocator());
+
+	Value dependencies;
+	dependencies.SetArray();
+	document.AddMember("dependencies",dependencies, document.GetAllocator());
+
 	StringBuffer buf;
 	PrettyWriter<StringBuffer> writer(buf);
 	document.Accept(writer);
 
 	std::ofstream fout; 
-
 	fout.open("zpm.info");
 	fout << buf.GetString() << endl;
 	fout.close();

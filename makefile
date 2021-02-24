@@ -1,9 +1,9 @@
 run:
-	g++ -c init.cpp
-	g++ -c util.cpp
-	g++ -c write.cpp
-	g++ -c zpm.cpp
-	g++ zpm.o init.o util.o write.o -lboost_system -lboost_filesystem -o zpm
+	g++ -c Build_file_handler.cpp
+	g++ -c Info_file_handler.cpp
+	g++ -c Z_modules_handler.cpp
+	g++ -c z.cpp
+	g++ z.o Build_file_handler.o Info_file_handler.o Z_modules_handler.o -lboost_system -lboost_filesystem -o zpm
 	rm -rf *.o;
 
 clean:
